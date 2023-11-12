@@ -252,7 +252,7 @@
           "koodomobile.com",
           "koodomobile.ca"
         ],
-        "outbound": ""
+        "outbound": "🚀 节点选择"
       },
       {
         "domain": [
@@ -1506,7 +1506,7 @@
           "hivedata.cc",
           "navi.gd.chinamobile.com"
         ],
-        "outbound": "REJECT"
+        "outbound": "reject"
       },
       {
         "domain": [
@@ -2534,7 +2534,7 @@
           "223.87.182.11/32",
           "223.87.182.52/32"
         ],
-        "outbound": "REJECT"
+        "outbound": "reject"
       },
       {
         "ip_cidr": [
