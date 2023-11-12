@@ -1506,7 +1506,7 @@
           "hivedata.cc",
           "navi.gd.chinamobile.com"
         ],
-        "outbound": "reject"
+        "outbound": "block"
       },
       {
         "domain": [
@@ -2534,7 +2534,7 @@
           "223.87.182.11/32",
           "223.87.182.52/32"
         ],
-        "outbound": "reject"
+        "outbound": "block"
       },
       {
         "ip_cidr": [
