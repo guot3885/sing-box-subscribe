@@ -25,8 +25,11 @@ def parse(data):
     if netquery.get('security', '') not in ['None', '']:
         node['tls'] = {
             'enabled': True,
-            'insecure': True
+            'insecure': True,
+            'server_name': ''
         }
+        if netquery.get('allowInsecure') == '0':
+            node['tls']['insecure'] = False
         if netquery.get('sni', '') not in ['None', '']:
             node['tls']['server_name'] = netquery['sni']
         if netquery.get('fp'):
@@ -55,9 +58,12 @@ def parse(data):
                 'type':'ws',
                 "path": netquery.get('path', '').rsplit("?")[0],
                 "headers": {
-                    "Host": '' if netquery.get('host') is None and netquery.get('sni') == 'None' else netquery.get('host', netquery['sni'])
+                    "Host": '' if netquery.get('host') is None and netquery.get('sni') == 'None' else netquery.get('host', netquery.get('sni', ''))
                 }
             }
+            if node['tls']['server_name'] == '':
+                if node['transport']['headers']['Host']:
+                    node['tls']['server_name'] = node['transport']['headers']['Host']
             if '?ed=' in netquery.get('path'):
                 node['transport']['early_data_header_name'] = 'Sec-WebSocket-Protocol'
                 node['transport']['max_early_data'] = int(netquery.get('path').rsplit("?ed=")[1])
